@@ -3,6 +3,7 @@ name = "rust_snake"
 version = "0.1.1"
 authors = ["Alejandro Ríos Jasso <jassoalex97@hotmail.com>"]
 edition = "2018"
+repository = "https://github.com/AlexRiosJ/rust_snake"
 description = "Snake game made in Rust"
 license = "MIT OR Apache-2.0"
 
