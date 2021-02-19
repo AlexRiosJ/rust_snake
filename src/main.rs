@@ -14,6 +14,7 @@ use piston::{
     window::WindowSettings,
 };
 use piston_window::PistonWindow;
+use rand::{thread_rng, Rng};
 use rust_snake::game::{
     food::Food,
     snake::{Direction, Snake, SnakePiece},
@@ -36,19 +37,24 @@ fn main() {
         .build()
         .unwrap();
 
+    let mut r = thread_rng();
+
     let mut game = Game {
         gl: GlGraphics::new(opengl),
         rows: ROWS,
         cols: COLS,
         square_width: SQUARE_WIDTH,
         just_eaten: false,
-        food: Food { x: 1, y: 1 },
+        food: Food {
+            x: r.gen_range(0..COLS),
+            y: r.gen_range(0..ROWS),
+        },
         score: 0,
         snake: Snake {
             gl: GlGraphics::new(opengl),
-            snake_parts: LinkedList::from_iter((vec![SnakePiece(COLS / 2, ROWS / 2)]).into_iter()),
+            snake_parts: LinkedList::from_iter((vec![SnakePiece(COLS / 4, ROWS / 2)]).into_iter()),
             width: SQUARE_WIDTH,
-            d: Direction::DOWN,
+            d: Direction::RIGHT,
         },
     };
 
@@ -70,4 +76,5 @@ fn main() {
             }
         }
     }
+    println!("Congratulations, your score was: {}", game.score);
 }
