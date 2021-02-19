@@ -1,19 +1,19 @@
-extern crate glutin_window;
 extern crate graphics;
 extern crate opengl_graphics;
 extern crate piston;
+extern crate piston_window;
 
 extern crate rand;
 
 use std::{collections::LinkedList, iter::FromIterator};
 
-use glutin_window::GlutinWindow;
 use opengl_graphics::{GlGraphics, OpenGL};
 use piston::{
     event_loop::{EventLoop, EventSettings, Events},
     input::{ButtonEvent, ButtonState, RenderEvent, UpdateEvent},
     window::WindowSettings,
 };
+use piston_window::PistonWindow;
 use rust_snake::game::{
     food::Food,
     snake::{Direction, Snake, SnakePiece},
@@ -21,7 +21,7 @@ use rust_snake::game::{
 };
 
 fn main() {
-    let opengl = OpenGL::V3_2;
+    let opengl = OpenGL::V4_5;
 
     const COLS: u32 = 30;
     const ROWS: u32 = 20;
@@ -30,9 +30,9 @@ fn main() {
     let width = COLS * SQUARE_WIDTH;
     let height = ROWS * SQUARE_WIDTH;
 
-    let mut window: GlutinWindow = WindowSettings::new("Rust Snake", [width, height])
-        .opengl(opengl)
+    let mut window: PistonWindow = WindowSettings::new("Rust Snake", [width, height])
         .exit_on_esc(true)
+        .resizable(false)
         .build()
         .unwrap();
 

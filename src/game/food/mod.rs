@@ -16,7 +16,7 @@ impl Food {
     }
 
     pub fn render(&mut self, gl: &mut GlGraphics, args: &RenderArgs, width: u32) {
-        const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
+        const RED: [f32; 4] = [0.92, 0.10, 0.14, 1.0];
 
         let x = self.x * width;
         let y = self.y * width;

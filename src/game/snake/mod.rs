@@ -25,20 +25,32 @@ pub struct SnakePiece(pub u32, pub u32);
 impl Snake {
     pub fn render(&mut self, args: &RenderArgs) {
         const WHITE: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
+        const YELLOW: [f32; 4] = [1.0, 0.94, 0.0, 1.0];
 
         let squares: Vec<graphics::types::Rectangle> = self
             .snake_parts
             .iter()
             .map(|p| SnakePiece(p.0 * self.width, p.1 * self.width))
-            .map(|p| graphics::rectangle::square((p.0 + 3) as f64, (p.1 + 3) as f64, (self.width - 6) as f64))
+            .map(|p| {
+                graphics::rectangle::square(
+                    (p.0) as f64 + 2.5,
+                    (p.1) as f64 + 2.5,
+                    (self.width - 5) as f64,
+                )
+            })
             .collect();
 
         self.gl.draw(args.viewport(), |c, gl| {
             let transform = c.transform;
 
-            squares
-                .into_iter()
-                .for_each(|square| graphics::rectangle(WHITE, square, transform, gl));
+            for i in 0..squares.len() {
+                graphics::rectangle(
+                    if i % 2 == 0 { WHITE } else { YELLOW },
+                    squares[i],
+                    transform,
+                    gl,
+                );
+            }
         })
     }
 
