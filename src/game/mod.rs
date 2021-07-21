@@ -70,10 +70,10 @@ impl Game {
     pub fn pressed(&mut self, btn: &Button) {
         let last_direction = self.snake.d.clone();
         self.snake.d = match btn {
-            &Button::Keyboard(Key::Up) if last_direction != Direction::DOWN => Direction::UP,
-            &Button::Keyboard(Key::Down) if last_direction != Direction::UP => Direction::DOWN,
-            &Button::Keyboard(Key::Left) if last_direction != Direction::RIGHT => Direction::LEFT,
-            &Button::Keyboard(Key::Right) if last_direction != Direction::LEFT => Direction::RIGHT,
+            Button::Keyboard(Key::Up) if last_direction != Direction::DOWN => Direction::UP,
+            Button::Keyboard(Key::Down) if last_direction != Direction::UP => Direction::DOWN,
+            Button::Keyboard(Key::Left) if last_direction != Direction::RIGHT => Direction::LEFT,
+            Button::Keyboard(Key::Right) if last_direction != Direction::LEFT => Direction::RIGHT,
             _ => last_direction,
         };
     }
