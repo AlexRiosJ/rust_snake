@@ -11,7 +11,7 @@ Snake game made in Rust
 If you're a **Rust programmer**, rust_snake can be installed with `cargo`.
 
 ```
-$ cargo install rust_snake
+cargo install rust_snake
 ```
 
 ## Building
@@ -19,21 +19,21 @@ $ cargo install rust_snake
 `rust_snake` can be build from source code.
 
 ```
-$ git clone https://github.com/AlexRiosJ/rust_snake.git
-$ cd rust_snake
-$ cargo build --release
+git clone https://github.com/AlexRiosJ/rust_snake.git
+cd rust_snake
+cargo build --release
 ```
 
 ## Usage
 
 ```
-$ rust_snake
+rust_snake
 ```
 
 or if you built it from source
 
 ```
-$ cargo run
+cargo run
 ```
 
 ### Controllers
